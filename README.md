@@ -1,122 +1,129 @@
-Brazil Serie B 2024 – Football Performance Analytics
+# Brazil Serie B 2024 – Football Analytics Project
 
-Project Overview
+## Project Overview
 
-This project analyses the 2024 Brazil Serie B football season using MySQL and Power BI. It focuses on comparing the home and away performances of the 20 participating teams across 380 matches.
+This project analyses the 2024 Brazil Serie B football season using SQL and Power BI, with a focus on comparing team performance in home and away matches.
 
-The analysis examines goals scored, goals conceded, attacking differences and defensive differences between home and away matches. SQL was used to calculate team-level performance metrics, while Power BI was used to develop an interactive dashboard for exploring the results.
+The analysis examines goals scored, goals conceded, and differences in attacking and defensive performance across both venues to identify patterns, strengths and weaknesses among the 20 participating teams.
 
-Dataset and Scope
+## Dataset and Scope
 
-Attribute| Details
-Competition| Brazil Serie B
-Season| 2024
-Teams| 20
-Matches| 380
-Data source| "Football-Data.co.uk" (https://www.football-data.co.uk/)
-Database| "brazil_serieb_db"
-Source table| "bra"
+- Competition: Brazil Serie B
+- Season: 2024
+- Number of Teams: 20
+- Number of Matches: 380
+- Matches per Team: 19 home and 19 away matches
+- Data Source: Football-Data.co.uk
 
-The match-level CSV dataset was downloaded from Football-Data.co.uk and imported directly into MySQL Workbench for analysis.
+The dataset contains match-level football statistics used to investigate team performance across home and away fixtures.
 
-Tools and Technologies
+## Tools and Technologies
 
-- MySQL Workbench 8.0.46: Database management and SQL analysis.
-- MySQL: Data aggregation, performance calculations and analytical view creation.
-- Microsoft Power BI Desktop: Data visualisation and interactive dashboard development.
-- Football-Data.co.uk: Source of the match-level dataset.
+- **MySQL Workbench 8.0.46:** Data querying, aggregation and analysis.
+- **Microsoft Power BI Desktop:** Data visualization and interactive dashboard development.
 
-SQL Analysis and Methodology
+## SQL Analysis and Methodology
 
-SQL was used to examine team performance across home and away matches during the 2024 season.
+SQL was used to transform match-level data into team-level performance indicators.
 
-The analysis involved:
+The analysis included:
 
-1. Data exploration: Examining match records, identifying teams and validating match totals.
-2. Team performance aggregation: Using "SUM()" and "COUNT()" to calculate goals scored, goals conceded, match outcomes and points.
-3. Home and away analysis: Separately evaluating each team's performance at both venues.
-4. Performance metrics: Calculating average goals scored and conceded per match, using 19 home and 19 away matches per team.
-5. Comparative analysis: Developing custom indicators to measure attacking and defensive differences.
-6. SQL view creation: Creating "v_team_venue_2024" as a consolidated dataset for Power BI.
+- Total matches and participating teams.
+- Home and away goals scored and conceded.
+- Home and away performance comparisons.
+- Team rankings and performance differences.
+- Goals scored and conceded per match.
+- Custom attacking and defensive performance indicators.
 
-SQL techniques included "SELECT", "WHERE", "GROUP BY", "UNION ALL", aggregate functions, "CASE", subqueries, "ROUND()", "ABS()" and "CREATE VIEW".
+### SQL techniques used included:
 
-Custom Performance Indicators
+"SELECT", "WHERE", "GROUP BY", "ORDER BY", "SUM()", "COUNT()", "ROUND()", "CASE", subqueries, "UNION ALL", "ABS()" and "CREATE VIEW".
 
-Two custom indicators were developed to measure differences in team performance across home and away matches.
+A final SQL view named "v_team_venue_2024" was created to provide the team-level metrics used in the Power BI dashboard.
 
-1. Home/Away Attacking Gap
+## Custom Performance Indicators
 
-Formula:
+Two indicators were developed to compare home and away performance.
 
-"Home Goals Scored per Match - Away Goals Scored per Match"
+### 1. Home/Away Attacking Gap
 
-- Positive value: The team scores more goals per match at home.
-- Negative value: The team scores more goals per match away.
-- Zero: Equal scoring rates at both venues.
+### Formula:
 
-2. Home/Away Defensive Gap
+Home Goals Scored per Match − Away Goals Scored per Match
 
-Formula:
+- A positive value indicates that a team scores more goals per match at home.
+- A negative value indicates stronger scoring performance away from home.
+- A value close to zero indicates similar attacking output across both venues.
 
-"Away Goals Conceded per Match - Home Goals Conceded per Match"
+### 2. Home/Away Defensive Gap
 
-- Positive value: The team concedes more goals per match away, indicating stronger home defensive performance.
-- Negative value: The team concedes more goals per match at home, indicating stronger away defensive performance.
-- Zero: Equal goals-conceded rates at both venues.
+### Formula:
 
-Key Findings
+Away Goals Conceded per Match − Home Goals Conceded per Match
 
-Finding| Team| Result
-Highest home goals per match| Corinthians| 1.95
-Highest away goals per match| Flamengo RJ| 1.63
-Best home defensive record| Fortaleza| 0.42
-Largest home attacking advantage| Corinthians| +1.06
-Largest home defensive advantage| Fortaleza| +1.21
+- A positive value indicates that a team concedes more goals away from home, suggesting stronger home defensive performance.
+- A negative value indicates that a team concedes fewer goals away from home.
+- A value of zero indicates equal goals conceded per match at both venues.
 
-Interpretation
+## Key Findings
 
-- Corinthians recorded the highest home scoring rate and the largest positive attacking gap.
-- Flamengo RJ recorded the highest away scoring rate, at 1.63 goals per match.
-- Fortaleza had the strongest home defensive record, conceding just 0.42 goals per home match.
-- Fortaleza also recorded the largest positive defensive gap, indicating a substantial difference between its home and away defensive performances.
+| Performance Indicator | Team | Result |
+|---|---|---:|
+| Highest Home Goals per Match | Corinthians | 1.95 |
+| Highest Away Goals per Match | Flamengo RJ | 1.63 |
+| Best Home Defence | Fortaleza | 0.42 |
+| Largest Attacking Gap | Corinthians | +1.06 |
+| Largest Defensive Gap | Fortaleza | +1.21 |
 
-Power BI Dashboard
+### Interpretation
 
-An interactive Power BI dashboard was developed to present the home and away performance analysis of the 20 teams.
+- Corinthians recorded the highest home scoring rate, averaging 1.95 goals per match.
+- Flamengo RJ had the highest away scoring rate, averaging 1.63 goals per match.
+- Fortaleza had the strongest home defensive record, conceding only 0.42 goals per home match.
+- Corinthians recorded the largest attacking gap, indicating a substantial difference between their home and away scoring rates.
+- Fortaleza recorded the largest defensive gap, showing a considerable difference between goals conceded at home and away.
 
-Dashboard Visualisations
+These findings highlight differences in how teams performed across home and away fixtures during the season.
 
-1. Home vs Away Goals Scored per Match: Compares each team's attacking output at home and away.
-2. Home vs Away Goals Conceded per Match: Compares defensive performance across both venues.
-3. Home/Away Attacking Gap: Highlights differences in goals scored per match between home and away fixtures.
-4. Home/Away Defensive Gap: Highlights differences in goals conceded per match between home and away fixtures.
+## Power BI Dashboard
 
-Key Performance Indicators (KPIs)
+The Power BI dashboard presents the results of the SQL analysis through four main visualisations:
 
-Three KPI cards provide additional summary information:
+1. Home vs Away Goals Scored per Match.
+2. Home vs Away Goals Conceded per Match.
+3. Home/Away Attacking Gap.
+4. Home/Away Defensive Gap.
 
-- Total number of teams analysed.
-- Highest home goals-per-match figure and the corresponding team.
-- Highest away goals-per-match figure and the corresponding team.
+### Key Performance Indicators
 
-Interactive Features
+The dashboard also includes three KPI cards:
 
-A team-selection dropdown slicer allows users to select individual teams and dynamically filter all four charts and the three KPI cards.
+- Total Teams Analysed: 20.
+- Highest Home Goals per Match: 1.95.
+- Highest Away Goals per Match: 1.63.
 
-The dashboard uses distinct colours to differentiate home and away performance and to distinguish attacking from defensive comparisons.
+The KPI cards identify the teams responsible for the highest home and away scoring rates.
 
-Project Limitations
+### Interactive Feature
 
-1. Match-level data: The analysis focuses on team performance rather than individual player contributions.
-2. Limited performance indicators: The dataset does not provide expected goals (xG), possession, shots, passing accuracy or other advanced performance statistics.
-3. Descriptive analysis: The project identifies performance patterns and differences but does not establish the underlying causes of those differences.
-4. Single-season scope: The analysis covers only the 2024 Brazil Serie B season, so it does not establish long-term performance trends.
+A team dropdown slicer allows users to select individual teams and examine their home and away performance across all four visualisations and the KPI cards.
 
-These limitations provide opportunities for future analysis using more detailed datasets.
+## Project Limitations
 
-Project Structure
+The analysis is based on match-level statistics available in the Football-Data.co.uk dataset.
 
+It does not include:
+
+- Player-level performance statistics.
+- Expected Goals (xG).
+- Possession statistics.
+- Shots and passing data.
+
+Consequently, the project focuses on team-level scoring and defensive performance rather than individual player contributions or broader tactical analysis.
+
+## Project Structure
+
+```text
 Brazil_Serie_B_2024_Football_Analytics/
 │
 ├── SQL/
@@ -126,10 +133,15 @@ Brazil_Serie_B_2024_Football_Analytics/
 │   └── Brazil_Serie_B_2024_Performance.pbix
 │
 ├── Images/
-│   └── Dashboard screenshots
+│   └── Dashboard screenshot(s)
 │
 └── README.md
+```
 
-Conclusion
+## Conclusion
 
-This project demonstrates the application of SQL and Power BI in football data analysis. It combines database querying, performance metric development and interactive visualisation to explore differences in team performance across home and away matches in the 2024 Brazil Serie B season.
+This project demonstrates the use of SQL for football data analysis and Power BI for communicating analytical findings through an interactive dashboard.
+
+By comparing home and away goals scored and conceded, the project identifies differences in team performance and highlights the importance of venue when evaluating football teams.
+
+It also demonstrates practical skills in data querying, aggregation, analytical indicator development, data visualisation and football performance analysis.
