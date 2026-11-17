@@ -108,6 +108,10 @@ The KPI cards identify the teams responsible for the highest home and away scori
 
 A team dropdown slicer allows users to select individual teams and examine their home and away performance across all four visualisations and the KPI cards.
 
+### Dashboard Preview
+
+![Brazil Serie B 2024 Power BI Dashboard](Images/Dashboard%20screenshot.png)
+
 ## Project Limitations
 
 The analysis is based on match-level statistics available in the Football-Data.co.uk dataset.
